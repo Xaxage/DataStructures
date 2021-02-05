@@ -1,4 +1,4 @@
-package Arrays;
+package array;
 
 public class Array {
     private int[] items;

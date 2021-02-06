@@ -1,4 +1,7 @@
 package linkedList;
+
+import array.Array;
+
 //addFirst
 //addLast +
 //deleteFirst
@@ -6,6 +9,7 @@ package linkedList;
 //contains
 //indexOf
 public class LinkedList {
+    private int size=0;
     private Node first;//head
     private Node last;//tail
 
@@ -26,12 +30,14 @@ public class LinkedList {
 
         if(first==last){
             first=last=null;
+            size--;
             return;
         }
 
         var second=first.next;//We do this, so Garbage collector
         first=null;  //will be able to delete unused memory with no reference.
         first=second;//
+        size--;
     }
 
     public void removeLast(){
@@ -39,12 +45,14 @@ public class LinkedList {
 
         if(first==null){
             throw new NullPointerException();
-        }
+        }else{
+            size--;
 
-        var current=first;
-        while(current!=null){
-            if(current.next==last) break;
-            current=current.next;
+            var current=first;
+            while(current!=null){
+                if(current.next==last) break;
+                current=current.next;
+            }
         }
     }
 
@@ -57,6 +65,7 @@ public class LinkedList {
             node.next=first;
             first=node;
         }
+        size++;
     }
 
     public void addLast(int item){
@@ -71,6 +80,7 @@ public class LinkedList {
             last.next=node;
             last=node;
         }
+        size++;
     }
 
     public int indexOf(int item){
@@ -101,5 +111,24 @@ public class LinkedList {
             }
         }
         return false;
+    }
+
+    public int size(){
+        return size;
+    }
+
+    public int[] toArray(){
+        int[] array = new int[size];
+        Node currentNode=first;
+        var index=0;
+        while(currentNode!=null){
+            array[index++]=currentNode.value;//"++" will increment the index.It's SHORTER.
+            currentNode=currentNode.next;
+        }
+        return array;
+    }
+
+    public void reverse(){
+
     }
 }

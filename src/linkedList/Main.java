@@ -13,7 +13,10 @@ public class Main {
         list.addLast(60);
 //        System.out.println(list.indexOf(10));
 //        System.out.println(list.contains(60));
-        list.removeFirst();
+//        list.removeFirst();
+
+        //var array=list.toArray();
+        //System.out.println(Arrays.toString(array));
 
 
     }

@@ -14,9 +14,11 @@ public class Main {
 //        System.out.println(list.indexOf(10));
 //        System.out.println(list.contains(60));
 //        list.removeFirst();
-
-        //var array=list.toArray();
-        //System.out.println(Arrays.toString(array));
+        int a= list.getKthFromTheEnd(7);
+        System.out.println(a);
+//        list.reverse();
+//        var array=list.toArray();
+//        System.out.println(Arrays.toString(array));
 
 
     }

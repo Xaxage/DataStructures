@@ -1,17 +1,10 @@
 package linkedList;
 
-import array.Array;
 
-//addFirst
-//addLast +
-//deleteFirst
-//deleteLast
-//contains
-//indexOf
 public class LinkedList {
     private int size=0;
-    private Node first;//head
-    private Node last;//tail
+    private Node head;//head
+    private Node tail;//tail
 
     private class Node{//We use it only here, so we don't need it outside.
         private int value;
@@ -21,36 +14,38 @@ public class LinkedList {
         public Node(int value) {//Constructor
             this.value = value;
         }
+
+        public Node(){}//Default constructor
     }
 
     public void removeFirst(){
-        if(first==null){
+        if(head ==null){
             throw new NullPointerException();
         }
 
-        if(first==last){
-            first=last=null;
+        if(head == tail){
+            head = tail =null;
             size--;
             return;
         }
 
-        var second=first.next;//We do this, so Garbage collector
-        first=null;  //will be able to delete unused memory with no reference.
-        first=second;//
+        var second= head.next;//We do this, so Garbage collector
+        head =null;  //will be able to delete unused memory with no reference.
+        head =second;//
         size--;
     }
 
     public void removeLast(){
 
 
-        if(first==null){
+        if(head ==null){
             throw new NullPointerException();
         }else{
             size--;
 
-            var current=first;
+            var current= head;
             while(current!=null){
-                if(current.next==last) break;
+                if(current.next== tail) break;
                 current=current.next;
             }
         }
@@ -59,11 +54,11 @@ public class LinkedList {
     public void addFirst(int item){
         Node node=new Node(item);
 
-        if(first==null){
-            first=last=node;
+        if(head ==null){
+            head = tail =node;
         }else{
-            node.next=first;
-            first=node;
+            node.next= head;
+            head =node;
         }
         size++;
     }
@@ -73,25 +68,25 @@ public class LinkedList {
         Node node=new Node(item);//we can replace the first 'Node' into var,
         // cause we write 'Node again after the 'new'.
 
-        if(first==null){
-            first=last=node;
+        if(head ==null){
+            head = tail =node;
         }
         else{
-            last.next=node;
-            last=node;
+            tail.next=node;
+            tail =node;
         }
         size++;
     }
 
     public int indexOf(int item){
         int index=0;
-        if(first==null){
+        if(head ==null){
             return -1;
         }
 
-        while(first!=null){
-            if(first.value!=item ){
-                first=first.next;
+        while(head !=null){
+            if(head.value!=item ){
+                head = head.next;
 
             }else {
                 return index;
@@ -103,9 +98,9 @@ public class LinkedList {
 
     public boolean contains(int item){
 
-        while(first!=null){
-            if(first.value!=item){
-                first=first.next;
+        while(head !=null){
+            if(head.value!=item){
+                head = head.next;
             }else{
                 return true;
             }
@@ -119,7 +114,7 @@ public class LinkedList {
 
     public int[] toArray(){
         int[] array = new int[size];
-        Node currentNode=first;
+        Node currentNode= head;
         var index=0;
         while(currentNode!=null){
             array[index++]=currentNode.value;//"++" will increment the index.It's SHORTER.
@@ -129,6 +124,44 @@ public class LinkedList {
     }
 
     public void reverse(){
+        var previous= head;
+        var current= head.next;
+        // 1 -> 2 -> 3 -> 4
+        // p    c    n
+        // 1 -> 2 <- 3    4
+        while(current!=null){
 
+            var next=current.next;//so after the next line we can contact to the next node.
+            current.next=previous;//1
+
+            previous=current;//moving forward
+            current=next;//moving forward
+        }
+        tail = head;
+        tail.next=null;//So we have no FLOATING reference (->)
+        head =previous;
+    }
+
+    public int getKthFromTheEnd(int k){
+        var first1=head;
+        var first2=head;
+        var last= new Node();
+        //var tmp=new Node();
+        int i=0;
+
+        while(i!=k) {
+            last = first1;
+            first1 = first1.next;
+            i++;
+            //10 20 30 40 50  k=3
+            // x    x
+        }
+
+        while(last!=tail){
+            first2=first2.next;
+            last=last.next;
+        }
+
+        return first2.value;
     }
 }

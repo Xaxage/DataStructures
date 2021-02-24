@@ -80,7 +80,7 @@ public class LinkedList {
 
     public int indexOf(int item){
         int index=0;
-        if(head ==null){
+        if(head ==null){//checking if the list is empty
             return -1;
         }
 

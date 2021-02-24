@@ -6,7 +6,7 @@ import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) {
-        String a="{([)]}";
+        String a="{([ )]}";
 //        StringReverser reverser=new StringReverser();
 //        System.out.println(reverser.reverse(a));
 //        System.out.println(ifBalanced1(a));

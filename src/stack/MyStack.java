@@ -7,7 +7,7 @@ public class MyStack {
     int counter=0;
     LinkedList<Integer> list=new LinkedList<>();
 
-    public void push(int elm){
+    public void push (int elm){
         list.add(elm);
         counter++;
     }

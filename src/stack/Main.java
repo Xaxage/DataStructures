@@ -1,16 +1,14 @@
 package stack;
 
-
-import java.util.LinkedList;
 import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) {
         String a="{([ )]}";
-//        StringReverser reverser=new StringReverser();
-//        System.out.println(reverser.reverse(a));
-//        System.out.println(ifBalanced1(a));
-//        System.out.println(ifBalanced2(a));
+/*      StringReverser reverser=new StringReverser();
+        System.out.println(reverser.reverse(a));
+        System.out.println(ifBalanced1(a));
+        System.out.println(ifBalanced2(a)); */
         MyStack st=new MyStack();
         st.push(10);
         st.push(20);
